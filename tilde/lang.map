@@ -1,0 +1,7 @@
+format = 1
+
+%lang {
+	name = "C#"
+	file-regex = "\.cs$"
+	lang-file = "csharp.lang"
+}
