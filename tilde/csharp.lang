@@ -1,66 +1,114 @@
 format = 1
+%define {
 
-#line comments
-%highlight {
-	start = "//"
-	end = "$"
-	style = "comment"
+	comment-line {
+		%highlight {
+			start = "//"
+			end = "$"
+			style = "comment"
+		}
+	}
+
+	comment-block {
+		%highlight {
+			start = "/\*"
+			end = "\*/"
+			style = "comment"
+		}
+	}
+
+	reserved-identifier {
+		%highlight {
+			regex = "\b(?:abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while)\b"
+			style = "keyword"
+		}
+	}
+
+	contextual-keyword {
+		%highlight {
+			regex = "\b(?:add|alias|ascending|async|await|by|descending|dynamic|equals|from|get|global|group|into|join|let|nameof|on|orderby|partial|remove|select|set|value|var|when|where|yield)\b"
+			style = "keyword"
+		}
+	}
+
+	interpolated-string-literal {
+		%highlight {
+			start = '(\$")|(\@\$")|(\$\@")'
+			%highlight { use = "string-interpolation" }
+			end = '"'
+			style = "string"
+		}
+	}
+
+	string-literal {
+		%highlight {
+			start = '"|(\@")'
+			end = '"'
+			style = "string"
+		}
+	}
+
+	character-literal {
+		%highlight {
+			start = "\'"
+			end = "\'"
+			style = "string"
+		}
+	}
+
+	preprocessor-directive {
+		%highlight {
+			start = '#'
+			end = '$'
+			style = "misc"
+		}
+	}
+
+	attribute-minimal {
+		%highlight {
+			regex = "\s\[\w*\]"
+			style = "misc"
+		}
+	}
+
+	attribute-constructor-start {
+		%highlight {
+			regex = "\[\w*\("
+			style = "misc"
+		}
+	}
+
+	attribute-constructor-end {
+		%highlight {
+			regex = '\)\]'
+			style = "misc"
+		}
+	}
+
+	string-interpolation {
+		%highlight {
+			start = "\{"
+			%highlight { use = "csharp" }
+			end = "\}"
+			style = "normal"
+		}
+	}
+
+	csharp {
+		%highlight {use = "comment-line" }
+		%highlight {use = "comment-block" }
+		%highlight {use = "reserved-identifier" }
+		%highlight {use = "contextual-keyword" }
+		%highlight {use = "interpolated-string-literal" }
+		%highlight {use = "string-literal" }
+		%highlight {use = "character-literal" }
+		%highlight {use = "character-literal" }
+		%highlight {use = "preprocessor-directive" }
+		%highlight {use = "attribute-minimal" }
+		%highlight {use = "attribute-constructor-start" }
+		%highlight {use = "attribute-constructor-end" }
+	}
+
 }
 
-#block comments
-%highlight {
-	start = "/\*"
-	end = "\*/"
-	style = "comment"
-}
-
-#reserved identifiers
-%highlight {
-	regex = "\b(?:abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while)\b"
-	style = "keyword"
-}
-
-#contextual keywords
-%highlight {
-	regex = "\b(?:add|alias|ascending|async|await|by|descending|dynamic|equals|from|get|global|group|into|join|let|nameof|on|orderby|partial|remove|select|set|value|var|when|where|yield)\b"
-	style = "keyword"
-}
-
-#string literals
-%highlight {
-	start = '(\@|\$|\@\$|\$\@)?"'
-	end = '"'
-	style = "string"
-}
-
-#character literals
-%highlight {
-	start = "\'"
-	end = "\'"
-	style = "string"
-}
-
-#preprocessor directives
-%highlight {
-	start = '#'
-	end = '$'
-	style = "misc"
-}
-
-#attributes - simplest case
-%highlight {
-	regex = "\s\[\w*\]"
-	style = "misc"
-}
-
-#attributes - complex case start
-%highlight {
-	regex = "\[\w*\("
-	style = "misc"
-}
-
-#attributes - complex case end
-%highlight {
-	regex = '\)\]'
-	style = "misc"
-}
+%highlight { use = "csharp" }
