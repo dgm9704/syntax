@@ -40,6 +40,15 @@ format = 1
 		}
 	}
 
+	attribute {
+		%highlight {
+			start = "\[\w"
+			%highlight { use = "attribute-constructor" }
+			end = "\]"
+			style = "misc"
+		}
+	}
+
 	string-literal {
 		%highlight {
 			start = '"|(\@")'
@@ -64,27 +73,6 @@ format = 1
 		}
 	}
 
-	attribute-minimal {
-		%highlight {
-			regex = "\s\[\w*\]"
-			style = "misc"
-		}
-	}
-
-	attribute-constructor-start {
-		%highlight {
-			regex = "\[\w*\("
-			style = "misc"
-		}
-	}
-
-	attribute-constructor-end {
-		%highlight {
-			regex = '\)\]'
-			style = "misc"
-		}
-	}
-
 	string-interpolation {
 		%highlight {
 			start = "\{"
@@ -94,19 +82,26 @@ format = 1
 		}
 	}
 
+	attribute-constructor {
+		%highlight {
+			start = "\("
+			%highlight { use = "csharp" }
+			end = "\)"
+			style = "normal"
+		}
+	}
+
 	csharp {
-		%highlight {use = "comment-line" }
-		%highlight {use = "comment-block" }
-		%highlight {use = "reserved-identifier" }
-		%highlight {use = "contextual-keyword" }
-		%highlight {use = "interpolated-string-literal" }
-		%highlight {use = "string-literal" }
-		%highlight {use = "character-literal" }
-		%highlight {use = "character-literal" }
-		%highlight {use = "preprocessor-directive" }
-		%highlight {use = "attribute-minimal" }
-		%highlight {use = "attribute-constructor-start" }
-		%highlight {use = "attribute-constructor-end" }
+		%highlight { use = "comment-line" }
+		%highlight { use = "comment-block" }
+		%highlight { use = "reserved-identifier" }
+		%highlight { use = "contextual-keyword" }
+		%highlight { use = "interpolated-string-literal" }
+		%highlight { use = "string-literal" }
+		%highlight { use = "character-literal" }
+		%highlight { use = "character-literal" }
+		%highlight { use = "preprocessor-directive" }
+		%highlight { use = "attribute" }
 	}
 
 }
