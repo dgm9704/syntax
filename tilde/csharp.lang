@@ -31,15 +31,6 @@ format = 1
 		}
 	}
 
-	interpolated-string-literal {
-		%highlight {
-			start = '(\$")|(\@\$")|(\$\@")'
-			%highlight { use = "string-interpolation" }
-			end = '"'
-			style = "string"
-		}
-	}
-
 	attribute {
 		%highlight {
 			start = "\[\w"
@@ -49,10 +40,40 @@ format = 1
 		}
 	}
 
+	string-interpolation {
+		%highlight {
+			start = "\{"
+			%highlight { use = "csharp" }
+			end = "\}"
+			style = "normal"
+		}
+	}
+
+	string-interpolated {
+		%highlight {
+			start = '\$"'#|(\@\$")|(\$\@")'
+			%highlight { use = "string-interpolation" }
+			end = '"'
+			style = "string"
+		}
+	}
+
+	string-verbatim {
+		%highlight {
+			start = '@"'
+			%highlight {
+				regex = '""'
+				style = "string"
+			}
+			end = '"'
+			style = "string"
+		}
+	}
+
 	string-literal {
 		%highlight {
-			start = '"|(\@")'
-			end = '"'
+			start = '"'
+			end = '[^\\]"'
 			style = "string"
 		}
 	}
@@ -73,14 +94,6 @@ format = 1
 		}
 	}
 
-	string-interpolation {
-		%highlight {
-			start = "\{"
-			%highlight { use = "csharp" }
-			end = "\}"
-			style = "normal"
-		}
-	}
 
 	attribute-constructor {
 		%highlight {
@@ -96,9 +109,9 @@ format = 1
 		%highlight { use = "comment-block" }
 		%highlight { use = "reserved-identifier" }
 		%highlight { use = "contextual-keyword" }
-		%highlight { use = "interpolated-string-literal" }
+		%highlight { use = "string-interpolated" }
 		%highlight { use = "string-literal" }
-		%highlight { use = "character-literal" }
+		%highlight { use = "string-verbatim" }
 		%highlight { use = "character-literal" }
 		%highlight { use = "preprocessor-directive" }
 		%highlight { use = "attribute" }
