@@ -32,8 +32,28 @@ namespace Syntax.Tilde
 		foo =  $"abcd{new FileInfo( "foo\"bar").Name.Lenght()}efgh";
 		foo =  $"abcd{new FileInfo($"/{foo}/{bar}").Name.Lenght()}efgh";
 
+		string bar;
+		bar =  "Alice \"Bob\" Cecilia";
+		bar = $"Alice ""Bob"" Cecilia";
+
+		bar = $@" "" {new Foo(@$"\")}  abc def ghi jkl ";
+
+//		bar = $"Alice \"Bob\" Cecilia";
+//		bar = "Alice ""Bob"" Cecilia";
+
+
 		foo = $@"abcd{new FileInfo("/foo/bar").Name.Lenght()}efgh";
+
 		foo = @$"abcd{new FileInfo("/foo/bar").Name.Lenght()}efgh";
+
+		var a = 0;
+		var aa = 123;
+		var aaa = -123;
+		var aaaa = +123
+		var aaaaa = 123UL
+
+		var b = 1.5;
+		var c = 0xffff;
 
 
 

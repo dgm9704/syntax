@@ -49,9 +49,22 @@ format = 1
 		}
 	}
 
+	string-verbatim-interpolated {
+		%highlight {
+			start = '(\$@")|(@\$")'
+			%highlight { use = "string-interpolation" }
+			%highlight {
+				regex = '""'
+				style = "string-escape"
+			}
+			end = '"'
+			style = "string"
+		}
+	}
+
 	string-interpolated {
 		%highlight {
-			start = '\$"'#|(\@\$")|(\$\@")'
+			start = '\$"'
 			%highlight { use = "string-interpolation" }
 			end = '"'
 			style = "string"
@@ -104,17 +117,26 @@ format = 1
 		}
 	}
 
+	number-integer {
+		%highlight {
+			regex = "\d+(UL|ul|U|u|L|l)?"
+			style = "number"
+		}
+	}
+
 	csharp {
 		%highlight { use = "comment-line" }
 		%highlight { use = "comment-block" }
 		%highlight { use = "reserved-identifier" }
 		%highlight { use = "contextual-keyword" }
+		%highlight { use = "string-verbatim-interpolated" }
 		%highlight { use = "string-interpolated" }
 		%highlight { use = "string-literal" }
 		%highlight { use = "string-verbatim" }
 		%highlight { use = "character-literal" }
 		%highlight { use = "preprocessor-directive" }
 		%highlight { use = "attribute" }
+		%highlight { use = "number-integer" }
 	}
 
 }
