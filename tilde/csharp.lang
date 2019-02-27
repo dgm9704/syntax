@@ -117,11 +117,25 @@ format = 1
 		}
 	}
 
+	number-hexadecimal {
+		%highlight {
+			regex = "0x[A-F0-9]+"
+			style = "number"
+		}
+	}
+
+	number-decimal {
+		%highlight {
+			regex = "\d?\.\d+[MmDdFf]?"
+			style = "number"
+  		}
+	}
+
 	number-integer {
 		%highlight {
 			regex = "\d+(UL|ul|U|u|L|l)?"
 			style = "number"
-		}
+  		}
 	}
 
 	csharp {
@@ -136,6 +150,8 @@ format = 1
 		%highlight { use = "character-literal" }
 		%highlight { use = "preprocessor-directive" }
 		%highlight { use = "attribute" }
+		%highlight { use = "number-hexadecimal" }
+		%highlight { use = "number-decimal" }
 		%highlight { use = "number-integer" }
 	}
 

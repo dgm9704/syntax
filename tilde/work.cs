@@ -47,12 +47,18 @@ namespace Syntax.Tilde
 		foo = @$"abcd{new FileInfo("/foo/bar").Name.Lenght()}efgh";
 
 		var a = 0;
-		var aa = 123;
-		var aaa = -123;
-		var aaaa = +123
-		var aaaaa = 123UL
+		a = 123;
+		a = -123;
+		a = +123;
+		a = 123UL;
+		a = 123l;
 
-		var b = 1.5;
+		var b = .0;
+		b = 1.0;
+		b = 2.0D;
+		b = 3.0009f;
+		b = 999999.5M;
+
 		var c = 0xffff;
 
 
