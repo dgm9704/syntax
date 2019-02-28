@@ -15,11 +15,18 @@ namespace Syntax.Tilde
 	using System.IO
 */
 
+#foo
 
+#pragma warning 123
+
+	/// <summary>foo bar</summary>
     [Serializable]
     [XmlRoot(ElementName = "foo", Namespace = "http://example.com/foo")]
     public class Work : IEquatable<Work>
     {
+
+		var @decimal = 0.5D;
+
         static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 
 		string foo;
@@ -60,9 +67,6 @@ namespace Syntax.Tilde
 		b = 999999.5M;
 
 		var c = 0xffff;
-
-
-
 
 		bar = @"foo\"bar\"baz"
 
