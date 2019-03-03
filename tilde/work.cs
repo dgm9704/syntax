@@ -103,7 +103,12 @@ namespace Syntax.Tilde
         {
             var ns = GetXmlSerializerNamespaces();
 
+			var foo = "foo\nbar\tbaz";
+			var bar = "foo\uA1B2bar\u";
 
+			var baz = "foo\xBBBBBar";
+
+			var frob = "foo\UAAAABBBBBbbar";
 
             writer.WriteProcessingInstruction("instance-generator", info);
 

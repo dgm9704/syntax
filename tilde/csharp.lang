@@ -56,6 +56,34 @@ format = 1
 		}
 	}
 
+	character-escape {
+		%highlight {
+			regex = "\\[0abfnrtv]"
+			style = "string-escape"
+		}
+	}
+
+	character-escape-unicode {
+		%highlight {
+			regex = "\\u[A-F0-9]{4}"
+			style = "string-escape"
+		}
+	}
+
+	character-escape-unicode-variable {
+		%highlight {
+			regex = "\\x[A-F0-9]{1,4}"
+			style = "string-escape"
+		}
+	}
+
+	character-escape-unicode-surrogate {
+		%highlight {
+			regex = "\\U[A-F0-9]{8}"
+			style = "string-escape"
+		}
+	}
+
 	string-interpolation {
 		%highlight {
 			start = "\{"
@@ -102,6 +130,10 @@ format = 1
 	string-literal {
 		%highlight {
 			start = '"'
+			%highlight { use = "character-escape" }
+			%highlight { use = "character-escape-unicode" }
+			%highlight { use = "character-escape-unicode-variable" }
+			%highlight { use = "character-escape-unicode-surrogate" }
 			end = '[^\\]"'
 			style = "string"
 		}
